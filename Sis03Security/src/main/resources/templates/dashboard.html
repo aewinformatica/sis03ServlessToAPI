@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
+</head>
+<body>
+    <div class="container">
+		<h1 th:text="|Bem-vindo ${#authentication.principal.username}  à Página Inicial!|"></h1>
+
+		<div sec:authorize="hasRole('USER')">Voce é um USUARIO</div>
+		<div sec:authorize="hasRole('USER')">Voce é um USUARIO</div>
+		
+		<div sec:authorize="hasRole('ADMIN')">Voce é um ADMIN</div>
+		<div sec:authorize="isAuthenticated()">Voce esta auteticado</div>
+		Authenticated user roles:
+		<div sec:authentication="principal.authorities"></div>
+        <p>Você está logado com sucesso.</p>
+		<div sec:authentication="principal.username"></div> 
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
