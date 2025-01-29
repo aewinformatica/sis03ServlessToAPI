@@ -18,6 +18,7 @@ public class ProdutoController {
 	ProdutoRepository produtoRepository;
 	
 	@GetMapping
+
 	public List<Produto> getAll(){
 		
 		return produtoRepository.findAll(); 
